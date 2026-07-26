@@ -4,7 +4,6 @@
 [![Project Demo][demo-shield]][demo-url]
 [![ROS2][ros2-shield]][ros2-url]
 [![Ubuntu][ubuntu-shield]][ubuntu-url]
-[![License][license-shield]][license-url]
 
 <br>
 
@@ -29,7 +28,6 @@ An autonomous differential drive robot built with **ROS 2 Jazzy**, featuring rob
 - Demo
 - Future Work
 - Contact
-- License
 
 ---
 <!-- MARKDOWN LINKS -->
@@ -50,6 +48,3 @@ An autonomous differential drive robot built with **ROS 2 Jazzy**, featuring rob
 
 [ubuntu-url]: https://ubuntu.com/
 
-[license-shield]: https://img.shields.io/badge/License-Apache_2.0-green?style=for-the-badge
-
-[license-url]: LICENSE
