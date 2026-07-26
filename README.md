@@ -8,7 +8,7 @@
 <br>
 
 <p align="center">
-    <img src="docs/images/cover.png" width="900">
+    <img src="images/cover.png" width="900">
 </p>
 
 ---
