@@ -29,24 +29,7 @@ An autonomous differential drive robot built with **ROS 2 Jazzy**, featuring rob
 - Future Work
 - Contact
 
----
-<!-- MARKDOWN LINKS -->
 
-[linkedin-shield]: https://img.shields.io/badge/LinkedIn-Ahmed_Ashraf-blue?style=for-the-badge&logo=linkedin
-
-[linkedin-url]: https://www.linkedin.com/in/ahmed-ashraf-778a192b1/
-
-[demo-shield]: https://img.shields.io/badge/Project-Demo-success?style=for-the-badge&logo=linkedin
-
-[demo-url]: https://www.linkedin.com/posts/ahmed-ashraf-778a192b1_ros2-robotics-nav2-ugcPost-7485037014556340225-o4gl/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsUWgwBTGFyu9h41JNTlvPe18yt37L7GNY
-
-[ros2-shield]: https://img.shields.io/badge/ROS2-Jazzy-blue?style=for-the-badge
-
-[ros2-url]: https://docs.ros.org/en/jazzy/
-
-[ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu
-
-[ubuntu-url]: https://ubuntu.com/
 # About
 This project demonstrates the complete software stack required for an autonomous differential drive mobile robot using ROS 2.
 
@@ -78,37 +61,132 @@ The project is intended for learning, research, and future deployment on a real 
 | cortex_planning | Planning modules |
 | cortex_bringup | Launch files |
 ---
-# System Architecture
+## System Architecture
+
+```text
 cortex_ws
-├── src
-│   ├── cortex_description
-│   ├── cortex_controller
-│   ├── cortex_mapping
-│   ├── cortex_localization
-│   ├── cortex_navigation
-│   ├── cortex_motion
-│   ├── cortex_planning
-│   └── cortex_bringup
----
-# Requirements
+└── src
+    ├── cortex_bringup          # Main launch files
+    ├── cortex_controller       # ros2_control configuration
+    ├── cortex_description      # URDF/Xacro, meshes and Gazebo plugins
+    ├── cortex_localization     # AMCL configuration
+    ├── cortex_mapping          # SLAM Toolbox configuration
+    ├── cortex_motion           # Motion controller
+    ├── cortex_navigation       # Navigation2 configuration
+    └── cortex_planning         # Path planning modules
+```
+## Requirements
+
 - Ubuntu 24.04
 - ROS 2 Jazzy
 - Gazebo Harmonic
 - Navigation2
 - SLAM Toolbox
 - RViz2
----
-# Installation
-mkdir cortex_ws
+- ros2_control
+## Installation
 
-cd ~/cortex_ws
+Clone the repository:
 
+```bash
+git clone https://github.com/ahmedbnm67-cloud/CORTEX-ros2-autonomous-differential-robot.git
+```
+
+Move to the workspace:
+
+```bash
+cd CORTEX-ros2-autonomous-differential-robot
+```
+
+Build the workspace:
+
+```bash
 colcon build
+```
 
+Source the workspace:
+
+```bash
 source install/setup.bash
+```
+## Usage
+
+### RViz Visualization
+
+Launch the robot visualization in RViz.
+
+```bash
+ros2 launch cortex_description veiwer.launch.xml
+```
+
 ---
-# Usage
+
+### Gazebo Simulation
+
+Launch the simulated robot in Gazebo.
+
+```bash
+ros2 launch cortex_description cortex_gazebo.launch.xml
+```
+
 ---
-# Future Work
+
+### SLAM Mapping
+
+Launch the complete robot with SLAM Toolbox to build a map.
+
+```bash
+ros2 launch cortex_bringup simulated_robot_slam.launch.xml
+```
+
 ---
-# Contact
+
+### AMCL Localization
+
+Load an existing map and localize the robot using AMCL.
+
+```bash
+ros2 launch cortex_bringup simulated_robot_amcl.launch.xml
+```
+
+---
+
+### Autonomous Navigation
+
+Launch the Navigation2 stack for autonomous navigation.
+
+```bash
+ros2 launch cortex_bringup simulated_robot_nav_amcl.launch.xml
+```
+## Future Work
+
+- Deploy the software on a real differential drive robot
+- Integrate an RGB-D camera
+- Dynamic obstacle avoidance
+- Multi-goal autonomous missions
+- Autonomous delivery application
+## Contact
+
+**Ahmed Ashraf**
+
+- LinkedIn: https://www.linkedin.com/in/ahmed-ashraf-778a192b1/
+- GitHub: https://github.com/ahmedbnm67-cloud
+
+---
+<!-- MARKDOWN LINKS -->
+
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-Ahmed_Ashraf-blue?style=for-the-badge&logo=linkedin
+
+[linkedin-url]: https://www.linkedin.com/in/ahmed-ashraf-778a192b1/
+
+[demo-shield]: https://img.shields.io/badge/Project-Demo-success?style=for-the-badge&logo=linkedin
+
+[demo-url]: https://www.linkedin.com/posts/ahmed-ashraf-778a192b1_ros2-robotics-nav2-ugcPost-7485037014556340225-o4gl/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsUWgwBTGFyu9h41JNTlvPe18yt37L7GNY
+
+[ros2-shield]: https://img.shields.io/badge/ROS2-Jazzy-blue?style=for-the-badge
+
+[ros2-url]: https://docs.ros.org/en/jazzy/
+
+[ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu
+
+[ubuntu-url]: https://ubuntu.com/
