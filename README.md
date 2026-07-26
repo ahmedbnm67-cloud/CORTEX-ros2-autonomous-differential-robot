@@ -47,4 +47,66 @@ An autonomous differential drive robot built with **ROS 2 Jazzy**, featuring rob
 [ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu
 
 [ubuntu-url]: https://ubuntu.com/
+---
+# About
+This project demonstrates the complete software stack required for an autonomous differential drive mobile robot using ROS 2.
 
+The robot is developed from scratch, starting with URDF modeling and simulation, then integrating ros2_control, SLAM, localization, Navigation2, and Behavior Trees to achieve autonomous navigation.
+
+The project is intended for learning, research, and future deployment on a real robot platform.
+---
+# Features
+- Differential Drive Mobile Robot
+- URDF/Xacro Robot Description
+- RViz Visualization
+- Gazebo Harmonic Simulation
+- ros2_control Integration
+- LiDAR Simulation
+- SLAM Toolbox Mapping
+- AMCL Localization
+- Navigation2 Stack
+- Behavior Trees
+---
+# Packages
+| Package | Description |
+|---------|-------------|
+| cortex_description | Robot model, URDF, meshes and simulation configuration |
+| cortex_controller | Robot controllers using ros2_control |
+| cortex_mapping | SLAM configuration |
+| cortex_localization | AMCL localization |
+| cortex_navigation | Navigation2 configuration |
+| cortex_motion | Motion behaviors |
+| cortex_planning | Planning modules |
+| cortex_bringup | Launch files |
+---
+# System Architecture
+cortex_ws
+├── src
+│   ├── cortex_description
+│   ├── cortex_controller
+│   ├── cortex_mapping
+│   ├── cortex_localization
+│   ├── cortex_navigation
+│   ├── cortex_motion
+│   ├── cortex_planning
+│   └── cortex_bringup
+---
+# Requirements
+- Ubuntu 24.04
+- ROS 2 Jazzy
+- Gazebo Harmonic
+- Navigation2
+- SLAM Toolbox
+- RViz2
+---
+# Installation
+mkdir cortex_ws
+
+cd ~/cortex_ws
+
+colcon build
+
+source install/setup.bash
+---
+# Usage
+---
