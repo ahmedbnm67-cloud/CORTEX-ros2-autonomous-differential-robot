@@ -47,7 +47,6 @@ An autonomous differential drive robot built with **ROS 2 Jazzy**, featuring rob
 [ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu
 
 [ubuntu-url]: https://ubuntu.com/
----
 # About
 This project demonstrates the complete software stack required for an autonomous differential drive mobile robot using ROS 2.
 
@@ -110,3 +109,6 @@ source install/setup.bash
 ---
 # Usage
 ---
+# Future Work
+---
+# Contact
