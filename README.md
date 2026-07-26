@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-A complete autonomous differential drive robot developed with <strong>ROS 2 Jazzy</strong>, featuring robot modeling, simulation, mapping, localization, and autonomous navigation using the Navigation2 stack.
+A complete autonomous differential drive robot built with **ROS 2 Jazzy**, featuring robot modeling, Gazebo simulation, SLAM, localization, and autonomous navigation using the **Navigation2** stack.
 </p>
 
 ---
@@ -33,12 +33,11 @@ A complete autonomous differential drive robot developed with <strong>ROS 2 Jazz
 
 ## About
 
-CORTEX is a complete ROS 2 autonomous mobile robot project developed from scratch.
+CORTEX is a ROS 2 autonomous differential drive robot developed from scratch to demonstrate the complete autonomous navigation pipeline.
 
-The project covers the entire autonomous navigation pipeline, beginning with robot modeling using **URDF/Xacro**, followed by **Gazebo Harmonic** simulation, **ros2_control** integration, **SLAM Toolbox** mapping, **AMCL** localization, and autonomous navigation using **Navigation2** and **Behavior Trees**.
+The project includes robot modeling, Gazebo simulation, ros2_control, SLAM Toolbox, AMCL localization, and Navigation2 for autonomous navigation.
 
-This project serves as both a learning platform and a foundation for future deployment on a real differential drive robot.
-
+**Designed for learning, research, and future deployment on a real robot platform.**
 ---
 
 ## Features
@@ -194,8 +193,9 @@ ros2 launch cortex_bringup simulated_robot_nav_amcl.launch.xml
 
 **Ahmed Ashraf**
 
-- 💼 LinkedIn: <https://www.linkedin.com/in/ahmed-ashraf-778a192b1/>
-- 💻 GitHub: <https://github.com/ahmedbnm67-cloud>
+[![GitHub][github-shield]][github-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Project Demo][demo-shield]][demo-url]
 
 ---
 
@@ -212,3 +212,8 @@ ros2 launch cortex_bringup simulated_robot_nav_amcl.launch.xml
 
 [ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white
 [ubuntu-url]: https://ubuntu.com/
+
+[github-shield]: https://img.shields.io/badge/GitHub-ahmedbnm67--cloud-181717?style=for-the-badge&logo=github&logoColor=white
+[github-url]: https://github.com/ahmedbnm67-cloud
+
+
