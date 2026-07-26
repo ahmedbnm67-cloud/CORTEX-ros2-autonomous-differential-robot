@@ -32,3 +32,24 @@ An autonomous differential drive robot built with **ROS 2 Jazzy**, featuring rob
 - License
 
 ---
+<!-- MARKDOWN LINKS -->
+
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-Ahmed_Ashraf-blue?style=for-the-badge&logo=linkedin
+
+[linkedin-url]: https://www.linkedin.com/in/ahmed-ashraf-778a192b1/
+
+[demo-shield]: https://img.shields.io/badge/Project-Demo-success?style=for-the-badge&logo=linkedin
+
+[demo-url]: https://www.linkedin.com/posts/ahmed-ashraf-778a192b1_ros2-robotics-nav2-ugcPost-7485037014556340225-o4gl/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsUWgwBTGFyu9h41JNTlvPe18yt37L7GNY
+
+[ros2-shield]: https://img.shields.io/badge/ROS2-Jazzy-blue?style=for-the-badge
+
+[ros2-url]: https://docs.ros.org/en/jazzy/
+
+[ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu
+
+[ubuntu-url]: https://ubuntu.com/
+
+[license-shield]: https://img.shields.io/badge/License-Apache_2.0-green?style=for-the-badge
+
+[license-url]: LICENSE
