@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-A complete autonomous differential drive robot built with **ROS 2 Jazzy**, featuring robot modeling, Gazebo simulation, SLAM, localization, and autonomous navigation using the **Navigation2** stack.
+A complete autonomous differential drive robot built with <strong>ROS 2 Jazzy</strong>, featuring robot modeling, Gazebo simulation, SLAM, localization, and autonomous navigation using the <strong>Navigation2</strong> stack.
 </p>
 
 ---
@@ -35,9 +35,9 @@ A complete autonomous differential drive robot built with **ROS 2 Jazzy**, featu
 
 CORTEX is a ROS 2 autonomous differential drive robot developed from scratch to demonstrate the complete autonomous navigation pipeline.
 
-The project includes robot modeling, Gazebo simulation, ros2_control, SLAM Toolbox, AMCL localization, and Navigation2 for autonomous navigation.
+The project includes robot modeling using **URDF/Xacro**, **Gazebo Harmonic** simulation, **ros2_control**, **SLAM Toolbox**, **AMCL** localization, and autonomous navigation using the **Navigation2** stack.
 
-**Designed for learning, research, and future deployment on a real robot platform.**
+> **Designed for learning, research, and future deployment on a real robot platform.**
 ---
 
 ## Features
