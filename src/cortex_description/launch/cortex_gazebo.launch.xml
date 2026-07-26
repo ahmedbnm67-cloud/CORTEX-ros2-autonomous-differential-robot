@@ -1,0 +1,55 @@
+<launch>
+
+      <let name="urdf_path"
+            value="$(find-pkg-share cortex_description)/urdf/cortex.urdf.xacro" />
+
+      <set_env name="GZ_SIM_RESOURCE_PATH"
+            value="$(find-pkg-share cortex_description)/.." />
+      <!-- Gazebo resource paths -->
+      <set_env
+            name="GZ_SIM_RESOURCE_PATH"
+            value="$(env GZ_SIM_RESOURCE_PATH):$(find-pkg-share cortex_description)/models:$(find-pkg-share cortex_description)/worlds" />
+
+      <node pkg="robot_state_publisher"
+            exec="robot_state_publisher">
+
+            <param name="robot_description"
+                  value="$(command 'xacro $(var urdf_path)')" />
+
+      </node>
+
+      <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+
+            <!-- Start Gazebo with the empty world -->
+            <!--  <arg name="gz_args" value="empty.sdf -r"/>  -->
+
+            <!-- Start Gazebo with your custom world -->
+            <arg name="gz_args"
+                  value="$(find-pkg-share cortex_description)/worlds/test.sdf -r" />
+
+      </include>
+
+      <node pkg="ros_gz_sim"
+            exec="create"
+            args="-topic robot_description" />
+
+      <!-- Gazebo Clock -->
+      <node pkg="ros_gz_bridge"
+            exec="parameter_bridge"
+            args="/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock" />
+
+      <!-- IMU -->
+      <node pkg="ros_gz_bridge"
+            exec="parameter_bridge"
+            args="/imu@sensor_msgs/msg/Imu[gz.msgs.IMU" />
+
+      <!-- LiDAR -->
+      <node pkg="ros_gz_bridge"
+            exec="parameter_bridge"
+            args="/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan" />
+      <node
+            pkg="cortex_localization"
+            exec="lidar_republisher.py"
+            output="screen" />
+
+</launch>

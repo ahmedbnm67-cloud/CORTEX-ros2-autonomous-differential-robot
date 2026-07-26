@@ -1,0 +1,115 @@
+amcl:
+  ros__parameters:
+
+    #==========================================================
+    # Simulation
+    #==========================================================
+
+    use_sim_time: True
+
+
+    #==========================================================
+    # ROS Interfaces / TF
+    #==========================================================
+
+    scan_topic: /cortex/scan            # LaserScan topic
+    global_frame_id: "map"         # Global reference frame
+    odom_frame_id: "odom"          # Odometry frame
+    base_frame_id: "base_footprint" # Robot base frame
+
+    tf_broadcast: true             # Publish map -> odom transform
+    transform_tolerance: 1.0       # TF lookup tolerance (seconds)
+
+    save_pose_rate: 0.5            # Save estimated pose every 0.5 sec
+
+    set_initial_pose: true         # Use initial pose below
+
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+
+
+    #==========================================================
+    # Motion (Odometry) Model
+    #==========================================================
+
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"
+
+    # Motion noise parameters
+    # Higher value = less trust in odometry
+
+    alpha1: 0.2    # Rotation noise caused by rotation
+    alpha2: 0.2    # Rotation noise caused by translation
+    alpha3: 0.2    # Translation noise caused by translation
+    alpha4: 0.2    # Translation noise caused by rotation
+
+    # Update only if robot moved enough
+
+    update_min_d: 0.25     # meters
+    update_min_a: 0.20     # radians
+
+
+    #==========================================================
+    # Laser Sensor Model
+    #==========================================================
+
+    laser_model_type: "likelihood_field"
+
+    max_beams: 60                  # Number of laser beams used
+
+    laser_max_range: 100.0         # Maximum valid scan distance
+    laser_min_range: -1.0          # Minimum valid distance (-1 = use sensor)
+
+    laser_likelihood_max_dist: 2.0 # Max obstacle distance used in likelihood field
+
+    sigma_hit: 0.2                 # Gaussian measurement standard deviation
+
+    lambda_short: 0.1              # Exponential parameter for short readings
+
+
+    #==========================================================
+    # Laser Probability Weights
+    #
+    # z_hit + z_short + z_max + z_rand ≈ 1.0
+    #==========================================================
+
+    z_hit: 0.50        # Correct measurements
+    z_short: 0.05      # Unexpected short readings
+    z_max: 0.05        # Maximum-range readings
+    z_rand: 0.50       # Random noisy measurements
+
+
+    #==========================================================
+    # Beam Skipping
+    #
+    # Ignore laser beams that disagree with most particles.
+    # Useful for moving people, doors, dynamic obstacles.
+    #==========================================================
+
+    do_beamskip: false
+
+    beam_skip_distance: 0.5
+    beam_skip_threshold: 0.3
+    beam_skip_error_threshold: 0.9
+
+
+    #==========================================================
+    # Particle Filter / Resampling
+    #==========================================================
+
+    min_particles: 500
+    max_particles: 2000
+
+    resample_interval: 1
+
+    # KLD Adaptive Sampling
+
+    pf_err: 0.05
+    pf_z: 0.99
+
+    # Recovery behavior
+
+    recovery_alpha_fast: 0.0
+    recovery_alpha_slow: 0.0

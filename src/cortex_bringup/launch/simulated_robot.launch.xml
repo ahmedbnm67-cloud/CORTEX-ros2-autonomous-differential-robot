@@ -1,0 +1,16 @@
+<launch>
+
+    <!-- Launch Gazebo -->
+    <include file="$(find-pkg-share cortex_description)/launch/cortex_gazebo.launch.xml"/>
+
+    <!-- Launch Controller -->
+    <include file="$(find-pkg-share cortex_controller)/launch/cortex_diff.launch.xml">
+                <arg name="use_sim_time" value="true"/>
+    </include>
+
+    <!-- Launch Joystick Teleop -->
+    <include file="$(find-pkg-share cortex_controller)/launch/joys_stick.launch.xml">
+        <arg name="use_sim_time" value="true"/>
+    </include>
+
+</launch>

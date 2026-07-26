@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<launch>
+
+     <!-- ========================= -->
+     <!-- Launch Arguments -->
+     <!-- ========================= -->
+
+     <arg name="use_sim_time" default="true" />
+
+     <arg name="joy_config"
+          default="$(find-pkg-share cortex_controller)/config/joy_config.yaml" />
+
+     <arg name="teleop_config"
+          default="$(find-pkg-share cortex_controller)/config/joy_teleop.yaml" />
+
+     <!-- ========================= -->
+     <!-- Joystick Driver -->
+     <!-- ========================= -->
+
+     <node
+          pkg="joy"
+          exec="joy_node"
+          name="joystick">
+
+          <param from="$(var joy_config)" />
+          <param name="use_sim_time" value="$(var use_sim_time)" />
+
+     </node>
+
+     <!-- ========================= -->
+     <!-- Joy Teleop -->
+     <!-- ========================= -->
+
+     <node
+          pkg="joy_teleop"
+          exec="joy_teleop"
+          name="joy_teleop">
+
+          <param from="$(var teleop_config)" />
+          <param name="use_sim_time" value="$(var use_sim_time)" />
+
+     </node>
+
+     <!-- ========================= -->
+     <!-- Twist Mux -->
+     <!-- ========================= -->
+
+     <include file="$(find-pkg-share twist_mux)/launch/twist_mux_launch.py">
+
+          <arg name="cmd_vel_out"
+               value="/cortex/cmd_vel_unstamped" />
+
+          <arg name="config_topics"
+               value="$(find-pkg-share cortex_controller)/config/twist_mux_topics.yaml" />
+
+          <arg name="config_joy"
+               value="$(find-pkg-share cortex_controller)/config/twist_mux_joy.yaml" />
+
+          <arg name="config_locks"
+               value="$(find-pkg-share cortex_controller)/config/twist_mux_locks.yaml" />
+
+          <arg name="use_sim_time"
+               value="$(var use_sim_time)" />
+
+     </include>
+
+     <!-- ========================= -->
+     <!-- Twist Relay -->
+     <!-- ========================= -->
+
+     <node
+          pkg="cortex_controller"
+          exec="twist_relay.py"
+          name="twist_relay">
+
+          <param name="use_sim_time"
+               value="$(var use_sim_time)" />
+
+     </node>
+
+</launch>

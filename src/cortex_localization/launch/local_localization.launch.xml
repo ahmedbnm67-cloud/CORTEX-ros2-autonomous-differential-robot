@@ -1,0 +1,20 @@
+<launch>
+
+    <!-- Extended Kalman Filter -->
+    <node
+        pkg="robot_localization"
+        exec="ekf_node"
+        name="ekf_filter_node"
+        output="screen">
+
+        <param from="$(find-pkg-share cortex_localization)/config/ekf.yaml"/>
+
+    </node>
+
+    <!-- IMU Republisher (Python version) -->
+    <node
+        pkg="cortex_localization"
+        exec="imu_republisher.py"
+        output="screen"/>
+
+</launch>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="cortex" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:include filename="common_properties.xacro"/>
+  <xacro:include filename="cortex_gazebo.xacro"/>
+  <xacro:include filename="ros2_control.xacro"/>
+  <xacro:include filename="imu_sensor.xacro"/>
+  <xacro:include filename="lidar_sensor.xacro"/>
+  <link name="base_footprint"/>
+
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.10506" rpy="0 0 0"/>
+      <mass value="4.3369"/>
+      <inertia
+        ixx="0.035501"
+        ixy="-2.9739E-06"
+        ixz="-2.1376E-06"
+        iyy="0.048962"
+        iyz="1.7265E-18"
+        izz="0.065221"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/base_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${blue}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="basefoot_to_baselink_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0595" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+
+  <link name="wheel_left_link">
+    <inertial>
+      <origin xyz="0.0 -0.006 0.0" rpy="0 0 0"/>
+      <mass value="0.060355"/>
+      <inertia
+        ixx="1.9285E-05"
+        ixy="-2.1415E-21"
+        ixz="4.3685E-21"
+        iyy="3.4547E-05"
+        iyz="-2.6561E-22"
+        izz="1.9285E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/wheel_left_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${dark_grey}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.034"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_leftwheel_joint" type="continuous">
+    <origin xyz="-2.9396E-05 0.1505 -0.026487" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_left_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="wheel_right_link">
+    <inertial>
+      <origin xyz="1.6248E-05 0.006 8.2404E-07" rpy="0 0 0"/>
+      <mass value="0.060355"/>
+      <inertia
+        ixx="1.9285E-05"
+        ixy="-2.0186E-21"
+        ixz="4.3944E-21"
+        iyy="3.4547E-05"
+        iyz="1.651E-22"
+        izz="1.9285E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/wheel_right_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${dark_grey}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.034"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_to_rightwheel_joint" type="continuous">
+    <origin xyz="-3.6159E-05 -0.1505 -0.026501" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_right_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <link name="caster_front_link">
+    <inertial>
+      <origin xyz="0 0 -2.7756E-17" rpy="0 0 0"/>
+      <mass value="0.0005236"/>
+      <inertia
+        ixx="5.236E-09"
+        ixy="-5.0839E-42"
+        ixz="-4.4842E-41"
+        iyy="5.236E-09"
+        iyz="6.7262E-41"
+        izz="5.236E-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/caster_front_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${silver}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_frontcaster_joint" type="fixed">
+    <origin xyz="0.134 0 -0.0545" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="caster_front_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+
+  <link name="caster_rear_link">
+    <inertial>
+      <origin xyz="0 5.7778E-34 2.7756E-17" rpy="0 0 0"/>
+      <mass value="0.0005236"/>
+      <inertia
+        ixx="5.236E-09"
+        ixy="-3.5257E-42"
+        ixz="4.4842E-41"
+        iyy="5.236E-09"
+        iyz="0"
+        izz="5.236E-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/caster_rear_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${silver}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_rearcaster_joint" type="fixed">
+    <origin xyz="-0.13404 0 -0.0545" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="caster_rear_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+
+  <link name="imu_link">
+    <inertial>
+      <origin xyz="-0.00053544 0.00032312 0.0021553" rpy="0 0 0"/>
+      <mass value="0.0037346"/>
+      <inertia
+        ixx="1.8127E-07"
+        ixy="1.9895E-10"
+        ixz="5.7181E-10"
+        iyy="5.8331E-07"
+        iyz="2.1317E-09"
+        izz="7.3847E-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/imu_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${red}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/imu_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_to_imu_joint" type="fixed">
+    <origin xyz="0.00058006 0.00024876 0.214" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+
+  <link name="lidar_link">
+    <inertial>
+      <origin xyz="0.00052763 0.01205 -0.028765" rpy="0 0 0"/>
+      <mass value="0.073085"/>
+      <inertia
+        ixx="2.4125E-05"
+        ixy="1.04E-07"
+        ixz="-9.4064E-09"
+        iyy="1.9581E-05"
+        iyz="-4.284E-07"
+        izz="4.1419E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/lidar_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="${yellow}"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cortex_description/meshes/lidar_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="base_to_lidar_joint" type="fixed">
+    <origin xyz="-1.548E-05 -0.013492 0.281" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+</robot>

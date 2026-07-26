@@ -1,0 +1,7 @@
+twist_mux:
+  ros__parameters:
+    locks:
+      dummy_lock:
+        topic: /dummy_lock
+        timeout: 0.0
+        priority: 0

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- ========================= -->
+    <!-- Robot Simulation -->
+    <!-- ========================= -->
+
+    <include file="$(find-pkg-share cortex_description)/launch/cortex_gazebo.launch.xml"/>
+
+    <!-- ========================= -->
+    <!-- Robot Controller -->
+    <!-- ========================= -->
+
+    <include file="$(find-pkg-share cortex_controller)/launch/cortex_diff.launch.xml">
+        <arg name="use_sim_time" value="true"/>
+    </include>
+
+    <!-- ========================= -->
+    <!-- Joystick -->
+    <!-- ========================= -->
+
+    <include file="$(find-pkg-share cortex_controller)/launch/joys_stick.launch.xml">
+        <arg name="use_sim_time" value="true"/>
+    </include>
+
+    <!-- ========================= -->
+    <!-- AMCL Localization -->
+    <!-- ========================= -->
+
+    <include file="$(find-pkg-share cortex_localization)/launch/global_localization.launch.xml"/>
+
+    <!-- ========================= -->
+    <!-- Navigation -->
+    <!-- ========================= -->
+
+    <include file="$(find-pkg-share cortex_navigation)/launch/navigation.launch.xml">
+        <arg name="use_sim_time" value="true"/>
+    </include>
+
+    <!-- ========================= -->
+    <!-- RViz -->
+    <!-- ========================= -->
+
+    <node
+        pkg="rviz2"
+        exec="rviz2"
+        name="rviz2"
+        output="screen"
+        args="-d $(find-pkg-share nav2_bringup)/rviz/nav2_default_view.rviz">
+
+        <param name="use_sim_time" value="true"/>
+
+    </node>
+
+</launch>

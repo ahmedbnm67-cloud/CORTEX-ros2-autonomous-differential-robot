@@ -1,0 +1,17 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    cortex_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+cortex_velocity_controller:
+  ros__parameters:
+    joints:
+      - base_leftwheel_joint
+      - base_to_rightwheel_joint
+

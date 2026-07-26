@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+      <!-- ===== Colour definitions ===== -->
+    <xacro:property name="blue"       value="0.2 0.4 0.8 1.0"/>
+    <xacro:property name="dark_grey"  value="0.2 0.2 0.2 1.0"/>
+    <xacro:property name="silver"     value="0.75 0.75 0.75 1.0"/>
+    <xacro:property name="red"        value="0.8 0.2 0.2 1.0"/>
+    <xacro:property name="yellow"     value="0.9 0.9 0.2 1.0"/>
+</robot>

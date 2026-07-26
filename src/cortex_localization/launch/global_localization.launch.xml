@@ -1,0 +1,83 @@
+<launch>
+
+    <!-- ========================= -->
+    <!-- Launch Arguments -->
+    <!-- ========================= -->
+
+    <arg name="map_name" default="test_map"/>
+    <arg name="use_sim_time" default="true"/>
+
+    <arg
+        name="amcl_config"
+        default="$(find-pkg-share cortex_localization)/config/amcl.yaml"/>
+
+    <!-- ========================= -->
+    <!-- lidar republisher -->
+    <!-- ========================= -->
+    <node
+        pkg="cortex_localization"
+        exec="lidar_republisher.py">
+    </node>
+
+
+    <node
+        pkg="nav2_map_server"
+        exec="map_server"
+        name="map_server"
+        output="screen">
+
+        <param
+            name="yaml_filename"
+            value="$(find-pkg-share cortex_mapping)/maps/$(var map_name)/map.yaml"/>
+
+        <param
+            name="use_sim_time"
+            value="$(var use_sim_time)"/>
+
+    </node>
+
+    <!-- ========================= -->
+    <!-- AMCL -->
+    <!-- ========================= -->
+
+    <node
+        pkg="nav2_amcl"
+        exec="amcl"
+        name="amcl"
+        output="screen">
+
+        <!-- Load AMCL configuration -->
+        <param from="$(var amcl_config)"/>
+
+        <!-- Override use_sim_time -->
+        <param
+            name="use_sim_time"
+            value="$(var use_sim_time)"/>
+
+    </node>
+
+    <!-- ========================= -->
+    <!-- Lifecycle Manager -->
+    <!-- ========================= -->
+
+    <node
+        pkg="nav2_lifecycle_manager"
+        exec="lifecycle_manager"
+        name="lifecycle_manager_localization"
+        output="screen">
+
+        <param
+            name="use_sim_time"
+            value="$(var use_sim_time)"/>
+
+        <param
+            name="autostart"
+            value="true"/>
+
+        <param
+            name="node_names"
+            value="['map_server', 'amcl']"/>
+
+    </node>
+
+</launch>

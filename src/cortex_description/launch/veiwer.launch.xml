@@ -1,0 +1,17 @@
+<launch>
+    <!-- Define the URDF path as a variable -->
+    <let name="urdf_path" value="$(find-pkg-share cortex_description)/urdf/cortex.urdf.xacro" /> 
+
+
+    <!-- Robot state publisher node -->
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description" 
+        value="$(command 'xacro $(var urdf_path)')" />
+    </node>
+
+    <!-- Joint state publisher GUI (optional) -->
+    <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui"/>
+
+    <node pkg="rviz2" exec="rviz2" output="screen"/>
+    
+</launch> 
