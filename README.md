@@ -104,7 +104,7 @@ cortex_ws
 Clone the repository
 
 ```bash
-git clone https://github.com/ahmedbnm67-cloud/CORTEX-ros2-autonomous-differential-robot.git
+git clone https://github.com/ahmed-ashraf-r/CORTEX-ros2-autonomous-differential-robot.git
 ```
 
 Move to the workspace
@@ -213,7 +213,7 @@ ros2 launch cortex_bringup simulated_robot_nav_amcl.launch.xml
 [ubuntu-shield]: https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white
 [ubuntu-url]: https://ubuntu.com/
 
-[github-shield]: https://img.shields.io/badge/GitHub-ahmedbnm67--cloud-181717?style=for-the-badge&logo=github&logoColor=white
-[github-url]: https://github.com/ahmedbnm67-cloud
+[github-shield]: https://img.shields.io/badge/GitHub-ahmed--ashraf--r-181717?style=for-the-badge&logo=github&logoColor=white
+[github-url]: https://github.com/ahmed-ashraf-r
 
 
